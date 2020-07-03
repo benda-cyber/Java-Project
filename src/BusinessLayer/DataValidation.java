@@ -49,7 +49,7 @@ public class DataValidation {
 	}
 	
 	public boolean isMedicalLicenseValid(String license) {
-		if(license.length()<5 ||license.length()>10) {
+		if(license.length()!=5) {
 			return false;
 		}
 		for(int i=0;i<license.length();i++) {

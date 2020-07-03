@@ -1,9 +1,9 @@
 package BusinessLayer;
 
 public class MedicalStaffMember extends Person {
-	private String MedicalLicense;
-	private String HospitalName;
-	private int YearsOfExperience;
+	protected String MedicalLicense;
+	protected String HospitalName;
+	protected int yearsOfExperience;
 	
 	public void UpdatePatientStatus(Patient patient) {
 		
