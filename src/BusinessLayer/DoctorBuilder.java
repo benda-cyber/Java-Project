@@ -55,13 +55,13 @@ public class DoctorBuilder {
 	}
 	public Doctor build() {
 		Doctor doctor=new Doctor();
-		doctor.firstName=this.firstName;
-		doctor.lastName=this.lastName;
-		doctor.age=this.age;
-		doctor.id=this.id;
-		doctor.MedicalLicense=this.MedicalLicense;
-		doctor.HospitalName=this.HospitalName;
-		doctor.yearsOfExperience=this.yearsOfExperience;
+		doctor.setFirstName(this.firstName);
+		doctor.setLastName(this.lastName);
+		doctor.setAge(this.age);
+		doctor.setId(this.id);
+		doctor.setMedicalLicense(this.MedicalLicense);
+		doctor.setHospitalName(this.HospitalName);
+		doctor.setYearsOfExperience(this.yearsOfExperience);
 		doctor.setMedicalSpecialty(this.MedicalSpecialty);
 		doctor.setUserName(this.userName);
 		doctor.setPassword(this.password);

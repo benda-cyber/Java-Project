@@ -21,7 +21,6 @@ public class RegisterController extends DataValidation {
 			String password,String medicalSpecialty,String medicalLicense,
 			String hospitalName,int yearsOfExperience) throws IllegalArgumentException,IOException,ClassNotFoundException,Exception {
 		
-	
 		if(registerController.isNameValid(firstName)==false || registerController.isNameValid(lastName)==false) {
 			throw new IllegalArgumentException("First name or last name should not contain numbers or spaces!");	
 		}
@@ -34,8 +33,12 @@ public class RegisterController extends DataValidation {
 		if(registerController.isPasswordValid(password)==false) {
 			throw new IllegalArgumentException("Invalid Password! password should contain 6-20 letters without spaces");
 		}
-		if(registerController.isMedicalLicenseValid(medicalLicense)) {
+		if(registerController.isMedicalLicenseValid(medicalLicense)==false) {
 			throw new IllegalArgumentException("Medical license should contain exactly 5 numbers without letters or spaces");
+		}
+		if(registerController.is_Hospital_Or_Specialty_Valid(hospitalName)==false 
+				|| registerController.is_Hospital_Or_Specialty_Valid(medicalSpecialty)==false) {
+			throw new IllegalArgumentException("Medical Specialty or hospital name should not contain numbers!");
 		}
 		registerService=RegisterService.getRegisterService();
 		

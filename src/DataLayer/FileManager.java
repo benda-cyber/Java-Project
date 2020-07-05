@@ -6,7 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Set;
+import java.util.HashSet;
+
+
+
 
 
 public class FileManager {
@@ -33,13 +36,22 @@ public class FileManager {
 		file.createNewFile();
 	}
 	
-	public Set<?> readFile(String filename) throws IOException,ClassNotFoundException{
+	public boolean isFileEmpty(String filename) {
+		File file=new File(filename);
+		if(file.length()==0) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public HashSet<?> readFile(String filename) throws IOException,ClassNotFoundException{
 		ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(filename));
-		Set<?> persons=(Set<?>)objectInputStream.readObject();
+		HashSet<?> persons=(HashSet<?>)objectInputStream.readObject();
 		objectInputStream.close();
 		return persons;	
 	}
-	public void writeFile(String filename,Set<?> persons)throws IOException{
+	public void writeFile(String filename,HashSet<?> persons)throws IOException{
 		ObjectOutputStream objectOutputStream=new ObjectOutputStream(new FileOutputStream(filename));
 		objectOutputStream.writeObject(persons);
 		objectOutputStream.close();

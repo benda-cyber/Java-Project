@@ -41,6 +41,7 @@ public class WelcomeDoctor {
 		}
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			System.exit(1);
 		}
 	}
@@ -67,13 +68,13 @@ public class WelcomeDoctor {
 			String lastName=scanner.nextLine();
 			System.out.println("id:");
 			String id=scanner.nextLine();
-			System.out.println("Username:");
+			System.out.println("Username(should contain 4-10 letters without numbers or spaces):");
 			String username=scanner.nextLine();
-			System.out.println("Password:");
+			System.out.println("Password(should contain 6-20 letters without spaces):");
 			String password=scanner.nextLine();
 			System.out.println("Medical specialty:");
 			String medicalSpecialty=scanner.nextLine();
-			System.out.println("Medical license:");
+			System.out.println("Medical license(should contain exactly 5 numbers):");
 			String medicalLicense=scanner.nextLine();
 			System.out.println("Hospital name:");
 			String hospitalName=scanner.nextLine();

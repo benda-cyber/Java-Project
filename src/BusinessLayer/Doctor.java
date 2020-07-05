@@ -1,8 +1,8 @@
 package BusinessLayer;
 
-import java.io.Serializable;
 
-public class Doctor extends MedicalStaffMember implements Serializable {
+
+public class Doctor extends MedicalStaffMember {
 	/**
 	 * 
 	 */
@@ -12,23 +12,12 @@ public class Doctor extends MedicalStaffMember implements Serializable {
 	private String password;
 	//private List<Patient> patients;
 	
-	public Doctor(String id_Or_MedicalLicense_Or_UserName) {
-		if(id_Or_MedicalLicense_Or_UserName.charAt(0)>=48 && id_Or_MedicalLicense_Or_UserName.charAt(0)<=57) {
-			if(id_Or_MedicalLicense_Or_UserName.length()==9) {
-				this.id=id_Or_MedicalLicense_Or_UserName;
-			}
-			else {
-				this.MedicalLicense=id_Or_MedicalLicense_Or_UserName;
-			}
-		}
-		else {
-			this.userName=id_Or_MedicalLicense_Or_UserName;
-		}
-			
-	}
+	
 	public Doctor() {
 		
 	}
+	
+	
 	
 	public String getMedicalSpecialty() {
 		return MedicalSpecialty;
@@ -56,6 +45,24 @@ public class Doctor extends MedicalStaffMember implements Serializable {
 	public static DoctorBuilder builder() {
 		return new DoctorBuilder();
 	}
+
+	
+	
+
+	@Override
+	public String toString() {
+		return "Doctor [MedicalSpecialty=" + MedicalSpecialty + ", userName=" + userName + ", password=" + password
+				+ ", MedicalLicense=" + getMedicalLicense() + ", HospitalName=" + getHospitalName() + ", yearsOfExperience="
+				+ getYearsOfExperience() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", age=" + getAge() + ", id="
+				+ getId() + "]";
+	}
+
+	
+	
+	
+	
+	
+	
 }
 
 /*public String PrescribeMedication(Patient patient) {

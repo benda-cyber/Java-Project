@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class Patient extends Person {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String[] Symptoms;
 	private boolean CoronaVirusStatus;
 	private String[] SideEffects;
