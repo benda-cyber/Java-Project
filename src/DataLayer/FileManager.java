@@ -8,6 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashSet;
 
+import BusinessLayer.Doctor;
+
 
 
 
@@ -45,13 +47,14 @@ public class FileManager {
 	}
 	
 	
-	public HashSet<?> readFile(String filename) throws IOException,ClassNotFoundException{
+	@SuppressWarnings("unchecked")
+	public HashSet<Doctor> readFile(String filename) throws IOException,ClassNotFoundException{
 		ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(filename));
-		HashSet<?> persons=(HashSet<?>)objectInputStream.readObject();
+		HashSet<Doctor> persons=(HashSet<Doctor>)objectInputStream.readObject();
 		objectInputStream.close();
 		return persons;	
 	}
-	public void writeFile(String filename,HashSet<?> persons)throws IOException{
+	public void writeFile(String filename,HashSet<Doctor> persons)throws IOException{
 		ObjectOutputStream objectOutputStream=new ObjectOutputStream(new FileOutputStream(filename));
 		objectOutputStream.writeObject(persons);
 		objectOutputStream.close();

@@ -31,7 +31,7 @@ public class RegisterController extends DataValidation {
 			throw new IllegalArgumentException("Invalid Username! Username should contain 4-10 letters without numbers or spaces");
 		}
 		if(registerController.isPasswordValid(password)==false) {
-			throw new IllegalArgumentException("Invalid Password! password should contain 6-20 letters without spaces");
+			throw new IllegalArgumentException("Invalid Password! password should contain 6-20 letters or numbers without spaces");
 		}
 		if(registerController.isMedicalLicenseValid(medicalLicense)==false) {
 			throw new IllegalArgumentException("Medical license should contain exactly 5 numbers without letters or spaces");

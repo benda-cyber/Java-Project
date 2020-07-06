@@ -1,5 +1,7 @@
 package BusinessLayer;
 
+import java.util.HashSet;
+
 public class DoctorBuilder {
 	
 	private String firstName;
@@ -12,6 +14,7 @@ public class DoctorBuilder {
 	private String MedicalSpecialty;
 	private String userName;
 	private String password;
+	private HashSet<Patient> patients;
 	
 	public DoctorBuilder firstName(String firstName) {
 		this.firstName=firstName;
@@ -53,6 +56,11 @@ public class DoctorBuilder {
 		this.password=Password;
 		return this;
 	}
+	public DoctorBuilder patients(HashSet<Patient> patients) {
+		this.patients=patients;
+		return this;
+	}
+	
 	public Doctor build() {
 		Doctor doctor=new Doctor();
 		doctor.setFirstName(this.firstName);
@@ -65,6 +73,7 @@ public class DoctorBuilder {
 		doctor.setMedicalSpecialty(this.MedicalSpecialty);
 		doctor.setUserName(this.userName);
 		doctor.setPassword(this.password);
+		doctor.setPatients(this.patients);
 		return doctor;
 		
 	}

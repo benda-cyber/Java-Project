@@ -1,10 +1,10 @@
 package BusinessLayer;
 
-//import DataLayer.DataBase;
+import DataLayer.DataBase;
 
 public class LoginService {
 	private static LoginService loginService;
-	//private DataBase dataBase;
+	private DataBase dataBase;
 	
 	private LoginService() {
 		
@@ -17,15 +17,13 @@ public class LoginService {
 		
 		return loginService;
 	}
-	/*public boolean Login(String Username,String Password,String id) {
+	public Doctor Login(String Username,String Password,String id)throws Exception {
 		dataBase=DataBase.getDataBase();
-		boolean doesDoctorExist=dataBase.ValidateDoctor(Username,Password,id);
-		if(doesDoctorExist) {
-			return true;
-		}
-		return false;
+		Doctor doctor=dataBase.Validate_And_Find_Doctor(Username,Password,id);
+		return doctor;
 		
-	}*/
+		
+	}
 	
 	
 

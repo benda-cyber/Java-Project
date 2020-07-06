@@ -1,6 +1,5 @@
 package BusinessLayer;
 
-import java.util.Arrays;
 
 public class Patient extends Person {
 	
@@ -8,51 +7,61 @@ public class Patient extends Person {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String[] Symptoms;
-	private boolean CoronaVirusStatus;
-	private String[] SideEffects;
-	private String[] HistoricalTreatments;
-	private String[] MedicalTreatments;
-	private String DiseaseName;
+	private String symptoms;
+	private String CoronaVirusStatus;
+	private String sideEffects;
+	private String historicalTreatments;
+	private String Medicines;
+	private String diseaseName;
 	private String MedicalState;
-	private String LastVisiting;
-	private String NextVisiting;
-	private String HomeAdress;
-	public String[] getSymptoms() {
-		return Symptoms;
+	private String patientStreet;
+	private int streetNumber;
+	private String patientCity;
+	private String NotesFromDoctor;
+	
+	public Patient() {
+		
 	}
-	public void setSymptoms(String[] symptoms) {
-		Symptoms = symptoms;
+	
+	public Patient(String id) {
+		this.setId(id);
 	}
-	public boolean isCoronaVirusStatus() {
+	
+	public String getSymptoms() {
+		return symptoms;
+	}
+	public void setSymptoms(String symptoms) {
+		this.symptoms = symptoms;
+	}
+	public String getCoronaVirusStatus() {
 		return CoronaVirusStatus;
 	}
-	public void setCoronaVirusStatus(boolean coronaVirusStatus) {
+	public void setCoronaVirusStatus(String coronaVirusStatus) {
 		CoronaVirusStatus = coronaVirusStatus;
 	}
-	public String[] getSideEffects() {
-		return SideEffects;
+	public String getSideEffects() {
+		return sideEffects;
 	}
-	public void setSideEffects(String[] sideEffects) {
-		SideEffects = sideEffects;
+	public void setSideEffects(String sideEffects) {
+		this.sideEffects = sideEffects;
 	}
-	public String[] getHistoricalTreatments() {
-		return HistoricalTreatments;
+	public String getHistoricalTreatments() {
+		return historicalTreatments;
 	}
-	public void setHistoricalTreatments(String[] historicalTreatments) {
-		HistoricalTreatments = historicalTreatments;
+	public void setHistoricalTreatments(String historicalTreatments) {
+		this.historicalTreatments = historicalTreatments;
 	}
-	public String[] getMedicalTreatments() {
-		return MedicalTreatments;
+	public String getMedicines() {
+		return Medicines;
 	}
-	public void setMedicalTreatments(String[] medicalTreatments) {
-		MedicalTreatments = medicalTreatments;
+	public void setMedicines(String medicines) {
+		Medicines = medicines;
 	}
 	public String getDiseaseName() {
-		return DiseaseName;
+		return diseaseName;
 	}
 	public void setDiseaseName(String diseaseName) {
-		DiseaseName = diseaseName;
+		this.diseaseName = diseaseName;
 	}
 	public String getMedicalState() {
 		return MedicalState;
@@ -60,29 +69,52 @@ public class Patient extends Person {
 	public void setMedicalState(String medicalState) {
 		MedicalState = medicalState;
 	}
-	public String getLastVisiting() {
-		return LastVisiting;
+	public String getPatientStreet() {
+		return patientStreet;
 	}
-	public void setLastVisiting(String lastVisiting) {
-		LastVisiting = lastVisiting;
+	public void setPatientStreet(String patientStreet) {
+		this.patientStreet = patientStreet;
 	}
-	public String getNextVisiting() {
-		return NextVisiting;
+	public int getStreetNumber() {
+		return streetNumber;
 	}
-	public void setNextVisiting(String nextVisiting) {
-		NextVisiting = nextVisiting;
+	public void setStreetNumber(int streetNumber) {
+		this.streetNumber = streetNumber;
 	}
-	public String getHomeAdress() {
-		return HomeAdress;
+	public String getPatientCity() {
+		return patientCity;
 	}
-	public void setHomeAdress(String homeAdress) {
-		HomeAdress = homeAdress;
+	public void setPatientCity(String patientCity) {
+		this.patientCity = patientCity;
 	}
+	public String getNotesFromDoctor() {
+		return NotesFromDoctor;
+	}
+	public void setNotesFromDoctor(String notesFromDoctor) {
+		NotesFromDoctor = notesFromDoctor;
+	}
+	public static PatientBuilder builder() {
+		return new PatientBuilder();
+	}
+
+	@Override
 	public String toString() {
-		return "Patient [Symptoms=" + Arrays.toString(Symptoms) + ", CoronaVirusStatus=" + CoronaVirusStatus
-				+ ", SideEffects=" + Arrays.toString(SideEffects) + ", HistoricalTreatments="
-				+ Arrays.toString(HistoricalTreatments) + ", MedicalTreatments=" + Arrays.toString(MedicalTreatments)
-				+ ", DiseaseName=" + DiseaseName + ", MedicalState=" + MedicalState + ", LastVisiting=" + LastVisiting
-				+ ", NextVisiting=" + NextVisiting + ", HomeAdress=" + HomeAdress + "]";
+		return "Patient [Symptoms=" + symptoms + ", Corona virus status=" + CoronaVirusStatus + ", Side effects="
+				+ sideEffects + ", Historical treatments=" + historicalTreatments + ", Medicines=" + Medicines
+				+ ", Disease name=" + diseaseName + ", Medical state=" + MedicalState + ", Patient street=" + patientStreet
+				+ ", Street number=" + streetNumber + ", patient city=" + patientCity + ", Notes from doctor="
+				+ NotesFromDoctor + ", First name=" + getFirstName() + ", Last name=" + getLastName()
+				+ ", Age=" + getAge() + ", Id=" + getId() + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -1,6 +1,7 @@
 package BusinessLayer;
 
 
+import java.util.HashSet;
 
 public class Doctor extends MedicalStaffMember {
 	/**
@@ -10,13 +11,15 @@ public class Doctor extends MedicalStaffMember {
 	private String MedicalSpecialty;
 	private String userName;
 	private String password;
-	//private List<Patient> patients;
+	private HashSet<Patient> patients;
 	
 	
 	public Doctor() {
 		
 	}
-	
+	public Doctor(String id) {
+		this.setId(id);
+	}
 	
 	
 	public String getMedicalSpecialty() {
@@ -47,15 +50,26 @@ public class Doctor extends MedicalStaffMember {
 	}
 
 	
-	
+	public HashSet<Patient> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(HashSet<Patient> patients) {
+		this.patients = patients;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Doctor [MedicalSpecialty=" + MedicalSpecialty + ", userName=" + userName + ", password=" + password
-				+ ", MedicalLicense=" + getMedicalLicense() + ", HospitalName=" + getHospitalName() + ", yearsOfExperience="
-				+ getYearsOfExperience() + ", firstName=" + getFirstName() + ", lastName=" + getLastName() + ", age=" + getAge() + ", id="
+		return "Doctor [Medical Specialty=" + MedicalSpecialty + ", Username=" + userName + ", Password=" + password
+				+ ", Oatients=" + patients + ", Medical License=" + getMedicalLicense() + ", Hospital Name="
+				+ getHospitalName() + ", Years of experience=" + getYearsOfExperience() + ", First name="
+				+ getFirstName() + ", Last name=" + getLastName() + ", Age=" + getAge() + ", Id="
 				+ getId() + "]";
 	}
+	
+
 
 	
 	

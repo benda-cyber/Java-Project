@@ -2,7 +2,7 @@ package BusinessLayer;
 
 public class LoginController extends DataValidation {
 	private static LoginController loginController;
-	//private LoginService loginService;
+	private LoginService loginService;
 	
 	private LoginController() {
 		
@@ -16,30 +16,24 @@ public class LoginController extends DataValidation {
 	}
 	
 			
-/*public boolean Login(String Username,String Password,String id) throws IllegalArgumentException {
+public Doctor Login(String Username,String Password,String id) throws IllegalArgumentException,Exception {
 	
-		if(Username==null||Username==""||Password==null||Password==""||id==null||id=="") {
-			throw new IllegalArgumentException("You have to fill all the empty fields!");
-		}
 		if(loginController.isIdValid(id)==false) {
-			throw new IllegalArgumentException("Wrong id!");
+			throw new IllegalArgumentException("Invalid id! id should contain exactly 9 numbers without letters or spaces");
 		}
 		if(loginController.isUsernameValid(Username)==false) {
-			throw new IllegalArgumentException("Invalid Username! the Username should contain 4-10 letters without numbers or spaces");
+			throw new IllegalArgumentException("Invalid Username! username should contain 4-10 letters without numbers or spaces");
 		}
 		if(loginController.isPasswordValid(Password)==false) {
-			throw new IllegalArgumentException("Invalid Password! the password should contain 6-20 letters without spaces");
+			throw new IllegalArgumentException("Invalid Password! password should contain 6-20 letters or numbers without spaces");
 			
 		}
 		loginService=LoginService.getLoginService();
-		boolean doesAccountExist=loginService.Login(Username,Password,id);
-		if(doesAccountExist) {
-			return true;
-		}
-		return false;
+		Doctor doctor=loginService.Login(Username,Password,id);
+		return doctor;
 		
 		
-	}*/
+	}
 }
 
 
