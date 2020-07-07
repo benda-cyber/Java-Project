@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import BusinessLayer.Doctor;
 import BusinessLayer.LoginController;
+import BusinessLayer.Patient;
 import BusinessLayer.PatientController;
 import BusinessLayer.RegisterController;
 
@@ -110,7 +111,7 @@ public class WelcomeDoctor {
 			this.addPatient(doctor);
 			break;
 		case "2":
-			
+			this.viewPatientData(doctor);
 			break;
 		case "3":
 			
@@ -170,6 +171,22 @@ public class WelcomeDoctor {
 		
 	
 	}
+	
+	public void viewPatientData(Doctor doctor)throws IllegalArgumentException,Exception {
+		try(Scanner scanner=new Scanner(System.in)){
+		System.out.println("Please write one of the IDs below to see the data of this patient:");
+		for(Patient patient:doctor.getPatients()) {
+			System.out.print(patient.getId() + " | ");
+		}
+		System.out.println();
+		String id=scanner.nextLine(); 
+		Patient patient=patientController.viewPatientData(doctor,id);
+		System.out.println("Here are the details of the patient:");
+		System.out.println(patient);
+		}
+	
+	}
+	
 	
 
 }

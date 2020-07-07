@@ -42,10 +42,17 @@ public class PatientController extends DataValidation {
 		patientService=PatientService.getPatientService();
 		patientService.Add(doctor, firstName, lastName, id, diseaseName, MedicalState, Medicines, sideEffects,
 				symptoms, historicalTreatments, CoronaVirusStatus, NotesFromDoctor, patientCity, patientStreet,
-				streetNumber, age);
+				streetNumber, age);	
+	}
+	
 		
-		
-		
+	public Patient viewPatientData(Doctor doctor,String id)throws IllegalArgumentException,Exception {
+		if(isIdValid(id)==false) {
+			throw new IllegalArgumentException("Invalid id! id should contain exactly 9 numbers without letters or spaces");
+		}
+		patientService=PatientService.getPatientService();
+		Patient patient=patientService.viewPatientData(doctor,id);
+		return patient;
 		
 	}
 

@@ -27,5 +27,10 @@ public class PatientService {
 				NotesFromDoctor,patientCity,patientStreet,streetNumber,age);
 		
 	}
+	public Patient viewPatientData(Doctor doctor,String id)throws Exception {
+		dataBase=DataBase.getDataBase();
+		Patient patient=dataBase.viewPatientData(doctor,id);
+		return patient;
+	}
 
 }

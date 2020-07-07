@@ -140,6 +140,21 @@ public class DataBase {
 		}
 		fileManager.writeFile(FILENAME,doctors);			
 	}
+	
+	public Patient viewPatientData(Doctor doctor,String id)throws Exception {
+		if(doctor.getPatients().isEmpty()) {
+			throw new Exception("There are no patients!");
+		}
+		if(doctor.getPatients().contains(new Patient(id))==false) {
+			throw new Exception("This patient does not exist!");
+		}
+		for(Patient patient:doctor.getPatients()) {
+			if(patient.getId().equals(id)) {
+				return patient;
+			}
+		}
+		return null;
+	}
 		
 }
 				

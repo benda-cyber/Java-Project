@@ -99,12 +99,12 @@ public class Patient extends Person {
 
 	@Override
 	public String toString() {
-		return "Patient [Symptoms=" + symptoms + ", Corona virus status=" + CoronaVirusStatus + ", Side effects="
-				+ sideEffects + ", Historical treatments=" + historicalTreatments + ", Medicines=" + Medicines
-				+ ", Disease name=" + diseaseName + ", Medical state=" + MedicalState + ", Patient street=" + patientStreet
-				+ ", Street number=" + streetNumber + ", patient city=" + patientCity + ", Notes from doctor="
-				+ NotesFromDoctor + ", First name=" + getFirstName() + ", Last name=" + getLastName()
-				+ ", Age=" + getAge() + ", Id=" + getId() + "]";
+		return "Patient:\nSymptoms:" + symptoms + "\n" + "Corona virus status:" + CoronaVirusStatus + "\n" + "Side effects:"
+				+ sideEffects + "\n" + "Historical treatments:" + historicalTreatments + "\n" + "Medicines:" + Medicines
+				+ "\n" + "Disease name:" + diseaseName + "\n" + "Medical state:" + MedicalState + "\n" + "Patient street:" + patientStreet
+				+ "\n" + "Street number:" + streetNumber + "\n" + "patient city:" + patientCity + "\n" + "Notes from doctor:"
+				+ NotesFromDoctor + "\n" + "First name:" + getFirstName() + "\n" + "Last name:" + getLastName()
+				+ "\n" + "Age:" + getAge() + "\n" + "Id:" + getId();
 	}
 	
 	
