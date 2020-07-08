@@ -139,4 +139,19 @@ public class DataValidation {
 		return false;
 	}
 	
+	public boolean is_Selected_Field_Valid(String selectedField) {
+		if(selectedField.isBlank()) {
+			throw new IllegalArgumentException("");
+		}
+		if(selectedField.equalsIgnoreCase("Symptoms")||selectedField.equalsIgnoreCase("Corona virus status")||
+				selectedField.equalsIgnoreCase("Side effects")||selectedField.equalsIgnoreCase("Medicines")||
+				selectedField.equalsIgnoreCase("Disease name")||selectedField.equalsIgnoreCase("Medical state")||
+				selectedField.equalsIgnoreCase("Notes from doctor")) {
+			return true;
+			
+		}
+		return false;
+		
+	}
+	
 }

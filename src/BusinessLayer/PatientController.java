@@ -19,7 +19,7 @@ public class PatientController extends DataValidation {
 	public void Add(Doctor doctor,String firstName,String lastName,String id,String diseaseName,String MedicalState,
 			String Medicines,String sideEffects,String symptoms,String historicalTreatments,String CoronaVirusStatus,
 			String NotesFromDoctor,String patientCity,String patientStreet,int streetNumber,int age)
-					throws IOException,ClassNotFoundException,Exception {
+					throws IllegalArgumentException,IOException,ClassNotFoundException,Exception {
 		
 		if(patientController.isNameValid(firstName)==false || patientController.isNameValid(lastName)==false) {
 			throw new IllegalArgumentException("First name or last name should not contain numbers or spaces!");	
@@ -46,14 +46,60 @@ public class PatientController extends DataValidation {
 	}
 	
 		
-	public Patient viewPatientData(Doctor doctor,String id)throws IllegalArgumentException,Exception {
-		if(isIdValid(id)==false) {
+	public Patient findPatient(Doctor doctor,String id)
+			throws IllegalArgumentException,IOException,ClassNotFoundException,Exception {
+		if(patientController.isIdValid(id)==false) {
 			throw new IllegalArgumentException("Invalid id! id should contain exactly 9 numbers without letters or spaces");
 		}
 		patientService=PatientService.getPatientService();
-		Patient patient=patientService.viewPatientData(doctor,id);
+		Patient patient=patientService.findPatient(doctor,id);
 		return patient;
 		
 	}
-
+	
+	public void Update_Patient_Field(Patient patient,String selectedField,String updatedField)
+			throws IllegalArgumentException,IOException,ClassNotFoundException,Exception {
+		patientService=PatientService.getPatientService();
+		if(patientController.is_Selected_Field_Valid(selectedField)==false) {
+			throw new IllegalArgumentException("Invalid field!");
+		}
+		if(selectedField.equalsIgnoreCase("Notes from doctor")) {
+			patientService.Update_Patient_Field(patient,selectedField,updatedField);
+		}
+		else {
+		 if(selectedField.equalsIgnoreCase("Corona virus status")) {
+			if(patientController.is_Corona_Virus_Status_Valid(updatedField)==false) {
+				throw new IllegalArgumentException("Corona virus status should be positive or negative!");
+			}
+		}
+		else if(selectedField.equalsIgnoreCase("Medical state")) {
+			if(patientController.isMedicalStateValid(updatedField)==false) {
+				throw new IllegalArgumentException("Invalid medical state!");
+			}
+		}
+		else {
+			if(patientController.doesContainNumber(updatedField)) {
+				throw new IllegalArgumentException("Disease name,medicines,side effects and symptoms cannot contain numbers!");
+			}
+		}
+		patientService.Update_Patient_Field(patient,selectedField,updatedField);
+		}
+		
+		
+	}
+	
+	public void deletePatient(Doctor doctor,Patient patient)
+			throws IllegalArgumentException,IOException,ClassNotFoundException,Exception {
+		patientService=PatientService.getPatientService();
+		patientService.deletePatient(doctor,patient);
+		
+		
+		
+		
+	}
+	
+	
 }
+		
+	
+

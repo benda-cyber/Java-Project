@@ -103,7 +103,7 @@ public class DataBase {
 				String NotesFromDoctor,String patientCity,String patientStreet,int streetNumber,int age)
 						throws IOException,ClassNotFoundException,Exception {
 		fileManager=FileManager.getFileManager();
-		doctors=fileManager.readFile(FILENAME); 
+		//doctors=fileManager.readFile(FILENAME); 
 			if(doctors.contains(new Doctor(id))) {
 				throw new Exception("One of the doctors already have this id!");
 			}
@@ -132,16 +132,16 @@ public class DataBase {
 				               .build();
 		
 		doctor.getPatients().add(patient);
-		for(Doctor d:doctors) {
+		/*for(Doctor d:doctors) {
 			if(d.getId().equals(doctor.getId())) {
 				d.setPatients(doctor.getPatients());
 				break;
 			}	
-		}
+		}*/
 		fileManager.writeFile(FILENAME,doctors);			
 	}
 	
-	public Patient viewPatientData(Doctor doctor,String id)throws Exception {
+	public Patient findPatient(Doctor doctor,String id)throws IOException,ClassNotFoundException,Exception {
 		if(doctor.getPatients().isEmpty()) {
 			throw new Exception("There are no patients!");
 		}
@@ -155,8 +155,52 @@ public class DataBase {
 		}
 		return null;
 	}
+	
+	public void Update_Patient_Field(Patient patient,String selectedField,String updatedField)
+			throws IOException,ClassNotFoundException,Exception {
+		fileManager=FileManager.getFileManager();
+		
+		if(selectedField.equalsIgnoreCase("Corona virus status")) {
+			patient.setCoronaVirusStatus(updatedField);
+		}
+		else if(selectedField.equalsIgnoreCase("Disease name")) {
+			patient.setDiseaseName(updatedField);
+		}
+		else if(selectedField.equalsIgnoreCase("Medical state")) {
+			patient.setMedicalState(updatedField);
+		}
+		else if(selectedField.equalsIgnoreCase("Medicines")) {
+			patient.setMedicines(updatedField);
+		}
+		else if(selectedField.equalsIgnoreCase("Notes from doctor")) {
+			patient.setNotesFromDoctor(updatedField);
+		}
+		else if(selectedField.equalsIgnoreCase("Side effects")){
+			patient.setSideEffects(updatedField);
+		}
+		else {
+			patient.setSymptoms(updatedField);
+		}
+		fileManager.writeFile(FILENAME, doctors);
+			
+		}
+	
+	public void deletePatient(Doctor doctor,Patient patient)throws IOException,ClassNotFoundException,Exception {
+		fileManager=FileManager.getFileManager();
+		doctor.getPatients().remove(patient);
+		fileManager.writeFile(FILENAME, doctors);
+	}
+	public void removeDoctor(Doctor doctor)throws IOException,ClassNotFoundException,Exception {
+		fileManager=FileManager.getFileManager();
+		doctors.remove(doctor);
+		fileManager.writeFile(FILENAME, doctors);
+		
+	}
+	
 		
 }
+
+
 				
 	
 
