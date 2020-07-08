@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import BusinessLayer.Doctor;
+import BusinessLayer.DoctorController;
 import BusinessLayer.LoginController;
 import BusinessLayer.Patient;
 import BusinessLayer.PatientController;
@@ -14,22 +15,23 @@ public class WelcomeDoctor {
 	private LoginController loginController;
 	private RegisterController registerController;
 	private PatientController patientController;
+	private DoctorController doctorController;
 	
 	public WelcomeDoctor() {
 		loginController=LoginController.getLoginController();
 		registerController=RegisterController.getRegisterController();
 		patientController=PatientController.getPatientController();
+		doctorController=DoctorController.getDoctorController();
 		
 		
 	}
 	
 	public void Welcome() {
-		System.out.println("Welcome Doctor");
+		System.out.println("Welcome Doctor!");
 		System.out.println("Please choose one of the following options:");
 		System.out.println("1.Login");
 		System.out.println("2.Register");
-		System.out.println("Q.exit");
-		
+		System.out.println("Q.Exit");
 		try(Scanner scanner=new Scanner(System.in)) {
 		String command=scanner.nextLine();
 		switch(command) {
@@ -103,7 +105,7 @@ public class WelcomeDoctor {
 		System.out.println("2.View patient data");
 		System.out.println("3.Update patient health condition");
 		System.out.println("4.Delete patient");
-		System.out.println("5.Find patient");
+		System.out.println("5.Remove account");
 		System.out.println("Q.Logout");
 		String command=scanner.nextLine();
 		switch(command) {
@@ -114,13 +116,21 @@ public class WelcomeDoctor {
 			this.viewPatientData(doctor);
 			break;
 		case "3":
-			
+			this.Update_Patient_Health_Condition(doctor);
+			break;
+		case "4":
+			this.deletePatient(doctor);
+			break;
+		case "5":
+			this.removeAccount(doctor);
 			break;
 		case "q":
 		case "Q":
 		default:
-		}	 
-	}catch(Exception e) {
+			break;
+		}
+		}
+	catch(Exception e) {
 			e.printStackTrace();
 			System.exit(1);
 	    }
@@ -180,11 +190,56 @@ public class WelcomeDoctor {
 		}
 		System.out.println();
 		String id=scanner.nextLine(); 
-		Patient patient=patientController.viewPatientData(doctor,id);
+		Patient patient=patientController.findPatient(doctor,id);
 		System.out.println("Here are the details of the patient:");
 		System.out.println(patient);
 		}
 	
+	}
+	
+	public void Update_Patient_Health_Condition(Doctor doctor)throws IllegalArgumentException,Exception {
+		try(Scanner scanner=new Scanner(System.in)){
+		System.out.println("Please write the id of the patient that you want to update:");
+		for(Patient patient:doctor.getPatients()) {
+			System.out.print(patient.getId() + " | ");
+		}
+		System.out.println();
+		String id=scanner.nextLine();
+		Patient patient=patientController.findPatient(doctor,id);
+		System.out.println("Please write the field that you want to update from the following fields:");
+		System.out.println("symptoms | Corona virus status(Positive or negative) | Side effects | Medicines"
+				+ " | Disease name | Medical State(good,fair,serious,critical or dead) | Notes from doctor");
+		String selectedField=scanner.nextLine();
+		System.out.println("Now choose what you want to write in this field");
+		String updatedField=scanner.nextLine();
+		patientController.Update_Patient_Field(patient,selectedField,updatedField);
+		System.out.println("The field of the patient updated successfully!");		
+	}
+}
+	
+	public void deletePatient(Doctor doctor)throws IllegalArgumentException,Exception {
+		try(Scanner scanner=new Scanner(System.in)){
+			System.out.println("Please write one of the IDs below to delete this patient:");
+			for(Patient patient:doctor.getPatients()) {
+				System.out.print(patient.getId() + " | ");
+			}
+			System.out.println();
+			String id=scanner.nextLine();
+			Patient patient=patientController.findPatient(doctor,id);
+			patientController.deletePatient(doctor,patient);
+		}
+	}
+	public void removeAccount(Doctor doctor)
+			throws IllegalArgumentException,IOException,ClassNotFoundException,Exception {
+		try(Scanner scanner=new Scanner(System.in)){
+		System.out.println("Are you sure you want to remove your account?");
+		String yes_or_no=scanner.nextLine();
+		boolean doctor_Chose_Yes=doctorController.removeDoctor(doctor,yes_or_no);
+		if(doctor_Chose_Yes) {
+			System.out.println("Your account has deleted successfully!");
+		  }
+		}
+		
 	}
 	
 	

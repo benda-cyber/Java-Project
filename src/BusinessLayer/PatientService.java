@@ -27,10 +27,19 @@ public class PatientService {
 				NotesFromDoctor,patientCity,patientStreet,streetNumber,age);
 		
 	}
-	public Patient viewPatientData(Doctor doctor,String id)throws Exception {
+	public Patient findPatient(Doctor doctor,String id)throws IOException,ClassNotFoundException,Exception {
 		dataBase=DataBase.getDataBase();
-		Patient patient=dataBase.viewPatientData(doctor,id);
+		Patient patient=dataBase.findPatient(doctor,id);
 		return patient;
+	}
+	public void Update_Patient_Field(Patient patient,String selectedField,String updatedField)throws Exception {
+		dataBase=DataBase.getDataBase();
+		dataBase.Update_Patient_Field(patient,selectedField,updatedField);
+		
+	}
+	public void deletePatient(Doctor doctor,Patient patient)throws IOException,ClassNotFoundException,Exception {
+		dataBase=DataBase.getDataBase();
+		dataBase.deletePatient(doctor,patient);
 	}
 
 }
