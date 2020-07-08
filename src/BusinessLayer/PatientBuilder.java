@@ -1,5 +1,8 @@
 package BusinessLayer;
 
+
+//using design pattern of building
+
 public class PatientBuilder {
 	private String firstName;
 	private String lastName;

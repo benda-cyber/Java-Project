@@ -38,16 +38,4 @@ public class MedicalStaffMember extends Person {
 		this.yearsOfExperience = yearsOfExperience;
 	}
 
-
-
-
-
-
-	public void UpdatePatientStatus(Patient patient) {
-		
-	}
-	
-	
-	
-
 }
