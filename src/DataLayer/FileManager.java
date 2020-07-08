@@ -50,13 +50,13 @@ public class FileManager {
 	@SuppressWarnings("unchecked")
 	public HashSet<Doctor> readFile(String filename) throws IOException,ClassNotFoundException{
 		ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(filename));
-		HashSet<Doctor> persons=(HashSet<Doctor>)objectInputStream.readObject();
+		HashSet<Doctor> doctors=(HashSet<Doctor>)objectInputStream.readObject();
 		objectInputStream.close();
-		return persons;	
+		return doctors;	
 	}
-	public void writeFile(String filename,HashSet<Doctor> persons)throws IOException{
+	public void writeFile(String filename,HashSet<Doctor> doctors)throws IOException{
 		ObjectOutputStream objectOutputStream=new ObjectOutputStream(new FileOutputStream(filename));
-		objectOutputStream.writeObject(persons);
+		objectOutputStream.writeObject(doctors);
 		objectOutputStream.close();
 	}
 		
