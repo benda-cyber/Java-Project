@@ -2,6 +2,8 @@ package BusinessLayer;
 
 import java.util.HashSet;
 
+//using design pattern of building
+
 public class DoctorBuilder {
 	
 	private String firstName;

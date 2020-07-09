@@ -16,10 +16,6 @@ public class Person implements Serializable{
 		
 	}
 	
-	public Person(String id) {
-		this.setId(id);
-	}
-
 	public String getFirstName() {
 		return firstName;
 	}
