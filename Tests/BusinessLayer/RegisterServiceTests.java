@@ -1,26 +1,27 @@
 package BusinessLayer;
 
-import static org.junit.Assert.*;
+
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 public class RegisterServiceTests {
 
 RegisterService rs = RegisterService.getRegisterService();
+LoginService ls=LoginService.getLoginService();
    
     		
 	
-	@Test//(expected = Exception.class)
-	public void testRegisterServiceThrowsIllegalArgException()  {
+	@Test
+	public void testRegisterThrowsIdAlreadyExists()  {
 		
 		try {
-		rs.Register("david", "B", 25, "f", "das", "dsa", null, null, "d", 10);
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		rs.Register("david", "tzuker", 35, "111111111", "billi", "123456","heart surgery","12345", "belinson", 10);
+		fail();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			assertEquals("Id already exists!",e.getMessage());
 		}
 	}
 

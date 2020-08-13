@@ -8,12 +8,12 @@ import org.junit.Test;
 public class PatientTests {
 
 	
-	Patient patient1;
+	Patient patient;
 	
 	@Before
 	public void setUp() {
 		System.out.println("SetUp");
-		patient1 = new Patient();
+		patient = new Patient();
 		
 	}
 	
@@ -21,30 +21,30 @@ public class PatientTests {
 	
 	@Test
 	public void testCoronaVirusStatusHasCorona() {
-		patient1.setCoronaVirusStatus("has corona");
+		patient.setCoronaVirusStatus("has corona");
 		String expected = "has corona";
-		assertSame("has corona", expected, patient1.getCoronaVirusStatus());
+		assertSame("has corona", expected, patient.getCoronaVirusStatus());
 	}
 	
 	@Test
 	public void testNotesFromDoctor() {
-		patient1.setNotesFromDoctor("stay safe");
+		patient.setNotesFromDoctor("stay safe");
 		String expected = "stay safe";
-		assertSame("stay safe", expected, patient1.getNotesFromDoctor());
+		assertSame("stay safe", expected, patient.getNotesFromDoctor());
 	}
 	
 	@Test
 	public void testSideEffectsHeadAche() {
-		patient1.setSideEffects("headache");
+		patient.setSideEffects("headache");
 		String expected = "headache";
-		assertSame("headache", expected, patient1.getSideEffects());
+		assertSame("headache", expected, patient.getSideEffects());
 	}
 	
 	@Test
 	public void testDiseaseNameFlu() {
-		patient1.setDiseaseName("flu");
+		patient.setDiseaseName("flu");
 		String expected = "flu";
-		assertSame("flu", expected, patient1.getDiseaseName());
+		assertSame("flu", expected, patient.getDiseaseName());
 	}
 	
 	

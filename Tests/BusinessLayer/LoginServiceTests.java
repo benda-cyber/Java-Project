@@ -1,6 +1,9 @@
 package BusinessLayer;
 
-import static org.junit.Assert.*;
+
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -10,17 +13,14 @@ public class LoginServiceTests {
    
     		
 	
-	@Test//(expected = Exception.class)
-	public void testLoginServiceThrowsIllegalArgException()  {
-		Doctor doctor1;
+	@Test
+	public void testLoginServiceThrowsDoctorDoesNotExist()  {
 		try {
-			doctor1 = lc.Login(null, null, null);
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Doctor doctor = lc.Login("batman","123456","125458653");
+			System.out.println(doctor);
+			fail();	
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			assertEquals("This doctor does not exist in the system!",e.getMessage());
 		}
 	}
 

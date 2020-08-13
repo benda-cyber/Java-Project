@@ -21,8 +21,7 @@ public class MedicalStaffMemberTests {
 	@Test
 	public void testMedicalStaffMemberHasLicense() {
 		msm1.setMedicalLicense("medicalLicense");
-		
-		assertNotNull(msm1.getMedicalLicense());;
+		assertNotNull(msm1.getMedicalLicense());
 	}
 
 }

@@ -1,81 +1,54 @@
 package DataLayer;
 
-import static org.junit.Assert.*;
 
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.HashSet;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import BusinessLayer.Doctor;
 import BusinessLayer.Patient;
-import BusinessLayer.PatientService;
 
 public class DataBaseTests {
 
 DataBase db = DataBase.getDataBase();
-   
-    		
-	
-	@Test
-	public void testRegisterDoctor()  {
-	
-		try {
-			db.RegisterDoctor("gg", "ff", 22, "flu", "f", "asd,das", "headAche", "sym", "dsadsa", 55);
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+Doctor doctor;
 
-	@Test
-	public void testValidateAndFindDoctor()  {
-		Doctor doctor;
-		//doctor = new Doctor();
-		try {
-			doctor = db.Validate_And_Find_Doctor("gg", "ff", "ggg");
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+@Before
+public void setUp() {
+	doctor=new Doctor();
 	
+}
+  
 	@Test
-	public void testAddPatient()  {
-		Doctor doctor;
-		doctor = new Doctor();
-		try {
-			db.addPatient(doctor, "dsa", "dsa", "222", "flu", "sick", "medicine", "ha", "sym", "", "", "", "", "", 5, 5);
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	
-	@Test
-	public void testViewPatientData()  {
-		Doctor doctor;
-		doctor = new Doctor();
+	public void testFindPatientThrowsPatientDoesNotExist()  {
+		doctor.setPatients(new HashSet<Patient>());
+		doctor.getPatients().add(new Patient());
 		Patient patient;
-		
 		try {
-			patient = db.viewPatientData(doctor, "123");
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			patient = db.findPatient(doctor, "152458675");
+			System.out.println(patient);
+			fail();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			assertEquals("This patient does not exist!",e.getMessage());
+
 		}
 	}
 	
+	@Test
+	public void testDoesDoctorHavePatientsThrowsNoPatients() {
+		try {
+			doctor.setPatients(new HashSet<Patient>());
+			db.Does_Doctor_Have_Patients(doctor);
+			fail();
+		} catch (Exception e) {
+			assertEquals("There are no patients!",e.getMessage());
+
+		}
+	}
 
 }

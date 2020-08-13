@@ -41,11 +41,11 @@ public class DataBase {
 		//if the data base already has this id it meants that this doctor already exists in the system
 		//because id is considered to be unique for each person
 		for(Doctor doctor : doctors) {
-			if(doctor.getId().equals(id)) {
+			if(doctor.getId().equals(id)||doctor.getPatients().contains(new Patient(id))) {
 				throw new Exception("Id already exists!");
 			}
 		}
-		//if the data base already has this medical license it means this doctor already exists in the system
+		//if the data base already has this medical license it means that this doctor already exists in the system
 		//because medical license is considered to be unique for each doctor
 		for(Doctor doctor : doctors) {
 			if(doctor.getMedicalLicense().equals(medicalLicense)) { 
@@ -101,7 +101,7 @@ public class DataBase {
 			}
 		}
 		//if we didn't find a doctor who has this username,password and id then this doctor does not exist in the system
-		throw new Exception("This doctor does not exist in the system");
+		throw new Exception("This doctor does not exist in the system!");
 	}
 	
 	public void addPatient(Doctor doctor,String firstName,String lastName,String id,String diseaseName,String MedicalState,

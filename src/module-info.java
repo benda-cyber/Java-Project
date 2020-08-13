@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Eitan
- *
- */
-module project {
-}

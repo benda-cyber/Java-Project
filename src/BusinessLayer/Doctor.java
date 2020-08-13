@@ -63,7 +63,7 @@ public class Doctor extends MedicalStaffMember {
 	@Override
 	public String toString() {
 		return "Doctor [Medical Specialty=" + MedicalSpecialty + ", Username=" + userName + ", Password=" + password
-				+ ", Oatients=" + patients + ", Medical License=" + getMedicalLicense() + ", Hospital Name="
+				+ ", Patients=" + patients + ", Medical License=" + getMedicalLicense() + ", Hospital Name="
 				+ getHospitalName() + ", Years of experience=" + getYearsOfExperience() + ", First name="
 				+ getFirstName() + ", Last name=" + getLastName() + ", Age=" + getAge() + ", Id="
 				+ getId() + "]";
